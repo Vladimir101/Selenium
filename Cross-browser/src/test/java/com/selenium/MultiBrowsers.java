@@ -12,7 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class MultiBrowsers
 {
 	private WebDriver driver;
-	private String browser = "edge"; // task: specify browser in the .config file
+	private String browser = "chrome"; // task: specify browser in the .config file
 	
 	@Before
 	public void setUp() throws Exception
