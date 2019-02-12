@@ -8,11 +8,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ElementExists
+public class ElementExistsAndScrolling
 {
 	private WebDriver driver;
 
@@ -36,6 +37,14 @@ public class ElementExists
 // check that element with id = myElement does not exist
 		List<WebElement> list = driver.findElements(By.id("myElement"));
 		assertTrue(list.size() == 0);	
+	}
+	
+	@Test
+	public void scrollingVertically() throws InterruptedException
+	{
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("window.scroll(0, 5000)");
+		Thread.sleep(5000);
 	}
 	
 	@After
