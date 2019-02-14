@@ -21,13 +21,13 @@ public class ElementStates
 	{
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("http://book.theautomatedtester.co.uk/chapter1");
 		driver.manage().window().maximize();
 	}
 
 	@Test
-	public void test()
+	public void gettingStates()
 	{
+		driver.get("http://book.theautomatedtester.co.uk/chapter1");
 // verify that the checkbox is visible		
 		WebElement checkBox = driver.findElement(By.name("selected(1234)"));
 		assertTrue(checkBox.isDisplayed());
@@ -35,6 +35,15 @@ public class ElementStates
 // verify that the checkbox is checked			
 		checkBox.click();
 		assertTrue(checkBox.isSelected());
+	}
+	
+	@Test
+	public void readingInputField()
+	{
+		driver.get("https://www.kmart.com/");
+		WebElement searchBox = driver.findElement(By.name("keyword"));
+		searchBox.sendKeys("shoes");
+		System.out.println(searchBox.getAttribute("value"));
 	}
 	
 	@After
