@@ -3,7 +3,9 @@ package com.selenium;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
+import java.io.IOException;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
@@ -21,6 +23,7 @@ public class SwitchingWindows
 	{
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		driver.get("https://the-internet.herokuapp.com/windows");
 		driver.manage().window().maximize();
 	}
@@ -49,7 +52,7 @@ public class SwitchingWindows
 	}
 	
 	@After
-	public void tearDown()
+	public void tearDown() throws IOException
 	{
 		driver.quit();
 	}

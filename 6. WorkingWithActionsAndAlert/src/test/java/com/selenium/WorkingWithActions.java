@@ -2,6 +2,7 @@ package com.selenium;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
@@ -53,5 +54,11 @@ public class WorkingWithActions
 				.click()
 				.perform();
 		assertEquals("Join", driver.findElement(By.xpath("//h2[1]")).getText());
+	}
+	
+	@After
+	public void tearDown()
+	{
+		driver.quit();
 	}
 }
