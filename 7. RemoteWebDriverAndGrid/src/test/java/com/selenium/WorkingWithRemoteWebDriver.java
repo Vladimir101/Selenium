@@ -2,6 +2,8 @@ package com.selenium;
 // start Selenium Standalone Server:
 // java -jar selenium-server-standalone-3.141.59.jar
 
+import static org.junit.Assert.assertTrue;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -28,6 +30,7 @@ public class WorkingWithRemoteWebDriver
 	public void test()
 	{
 		driver.get("http://book.theautomatedtester.co.uk/");
+		assertTrue(driver.getTitle().contains("Selenium"));
 	}
 	
 	@After
