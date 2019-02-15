@@ -2,6 +2,7 @@ package com.selenium;
 // start Selenium Standalone Server:
 // java -jar selenium-server-standalone-3.141.59.jar
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.junit.After;
@@ -15,7 +16,7 @@ public class WorkingWithRemoteWebDriver
 	private RemoteWebDriver driver;
 	
 	@Before
-	public void setUp() throws Exception
+	public void setUp() throws MalformedURLException 
 	{
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setBrowserName("chrome");
