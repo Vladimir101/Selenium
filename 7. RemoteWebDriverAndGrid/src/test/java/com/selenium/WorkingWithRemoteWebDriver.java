@@ -1,4 +1,6 @@
 package com.selenium;
+// start Selenium Standalone Server:
+// java -jar selenium-server-standalone-3.141.59.jar
 
 import java.net.URL;
 
