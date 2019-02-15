@@ -1,6 +1,5 @@
 package com.selenium;
 // run hub
-
 // java -jar selenium-server-standalone-3.141.59.jar –role hub <–port 1111>
 //
 // register node
