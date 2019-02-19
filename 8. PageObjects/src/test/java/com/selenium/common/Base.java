@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 public class Base
 {
 	protected WebDriver driver = null;
-
+	
 	// using FluentWait
 	protected void waitForElementToBeClickable(WebElement element)
 	{
