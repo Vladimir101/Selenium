@@ -34,7 +34,7 @@ public class TestPO
 	public void testValidLogin()
 	{
 		HomePage homePage = LoginPage.open(driver)
-				 					 .validLogin("tomsmith", "SuperSecretPassword!");
+				.validLogin("tomsmith", "SuperSecretPassword!");
 		assertTrue(homePage.getLoginConfirmation().contains("You logged into"));
 		
 		LoginPage loginPage = homePage.logout();
