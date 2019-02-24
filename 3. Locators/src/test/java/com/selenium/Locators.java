@@ -1,6 +1,7 @@
 package com.selenium;
 
 import java.util.concurrent.TimeUnit;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,48 +18,43 @@ public class Locators
 	{
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("https://www.kmart.com/");
+		driver.get("https://www.kmart.com");
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
 	@Test
-	public void test()
+	public void test() throws InterruptedException
 	{
-		// by id
-		driver.findElement(By.id("keyword")).sendKeys("milk");
+// by className - Kmart logo
+		driver.findElement(By.className("ribbon-kmart-logo")).click();
+	
+// by CSS selector - Sign In, Accounts & Points
+		driver.findElement(By.cssSelector("#yourAccount")).click();	
+		driver.navigate().refresh();	
 		
-		driver.navigate().refresh();
-		// by name
-		driver.findElement(By.name("keyword")).sendKeys("coke"); 
+// by id - search box
+		driver.findElement(By.id("keyword")).sendKeys("milk");		
+
+// by link text - Kmart logo
+		driver.findElement(By.linkText("Kmart home")).click();		
 		
-		// by link text
-		driver.findElement(By.linkText("Kmart home")).click();
+// by name - search box
+		driver.findElement(By.name("keyword")).sendKeys("coke");
 		
-		// by partial link text
+// by partial link text	- search box
 		driver.findElement(By.partialLinkText("home")).click();
 		
-		// by CSS selector
-		driver.findElement(By.cssSelector("#yourAccount")).click();
+// by tagName
+		System.out.println(driver.findElement(By.tagName("body")).getText());
 		
-		driver.navigate().refresh();
-		// by XPath
-		driver.findElement(By.xpath("//a[@class='gnf_tree_junction'][contains(text(),'Shoes')]")).click();
-		
-		driver.navigate().refresh();
-		// by className
-		driver.findElement(By.className("ribbon-kmart-logo")).click();
-		
-		// by tagName
-		System.out.println(
-				driver.findElement(By.tagName("body")).getText());	
+// by XPath - Shoes
+		driver.findElement(By.xpath("//a[@class='gnf_tree_junction'][contains(text(),'Shoes')]")).click();		
 	}
-
+	
 	@After
-	public void tearDown()
+	public void tearDown() throws Exception
 	{
 		driver.quit();
 	}
 }
-
-	
