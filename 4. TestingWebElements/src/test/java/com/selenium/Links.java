@@ -3,6 +3,7 @@ package com.selenium;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -22,12 +23,13 @@ public class Links
 	{
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	}
 
 	@Before
 	public void setUp()
 	{
-		driver.get("https://www.kmart.com/");
+		driver.get("http://book.theautomatedtester.co.uk/");
 		driver.manage().window().maximize();
 	}
 
@@ -37,36 +39,24 @@ public class Links
 		List<WebElement> list = driver.findElements(By.tagName("a"));
 // get the number of links
 		int numberOfLinks = list.size();
-		System.out.println("The number of Kmart links are " + numberOfLinks);
-		
-// print first 10 link names
-		for (int i = 1; i <= 10; i++)
-			System.out.println(i + "." + list.get(i - 1).getText());
-		
-// print first 10 link urls
-		int i = 1;
-		for (WebElement e: list)
+		System.out.println("The number of links on the home page are " + numberOfLinks);
+				
+// print all links with names and urls
+		int i = 1; 
+		for (WebElement element: list)
 		{
-			System.out.println(i + "." + e.getAttribute("href"));
+			System.out.println(i + ". " + element.getText() + ": " + element.getAttribute("href"));
 			i++;
-			if (i == 11)
-				break;
 		}
-	}
-	
-	@Test
-	public void getElementText()
-	{
-		WebElement logoLink = driver.findElement(By.className("ribbon-kmart-logo"));
-		String logoLinkTest = logoLink.getText();
-		System.out.println(logoLinkTest);
 	}
 	
 	@Test
 	public void getHTMLElement()
 	{
 		String body = driver.getPageSource();
-		assertTrue(body.contains("Kmart"));
+		System.out.println("Page HTML code:");
+		System.out.println(body);
+		assertTrue(body.contains("Selenium"));
 	}
 	
 	@AfterClass
