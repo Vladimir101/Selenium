@@ -21,29 +21,30 @@ public class ElementStates
 	{
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
+		driver.get("http://book.theautomatedtester.co.uk/");
 		driver.manage().window().maximize();
 	}
 
 	@Test
 	public void gettingStates()
 	{
-		driver.get("http://book.theautomatedtester.co.uk/chapter1");
+		driver.findElement(By.linkText("Chapter1")).click();
 // verify that the checkbox is visible		
-		WebElement checkBox = driver.findElement(By.name("selected(1234)"));
-		assertTrue(checkBox.isDisplayed());
+		WebElement checkbox = driver.findElement(By.name("selected(1234)"));
+		assertTrue(checkbox.isDisplayed());
 		
 // verify that the checkbox is checked			
-		checkBox.click();
-		assertTrue(checkBox.isSelected());
+		checkbox.click();
+		assertTrue(checkbox.isSelected());
 	}
 	
 	@Test
 	public void readingInputField()
 	{
-		driver.get("https://www.kmart.com/");
-		WebElement searchBox = driver.findElement(By.name("keyword"));
-		searchBox.sendKeys("shoes");
-		System.out.println(searchBox.getAttribute("value"));
+		WebElement textbox = driver.findElement(By.id("q"));
+		textbox.sendKeys("New text");
+		String text = textbox.getAttribute("value");
+		assertEquals("New text", text);
 	}
 	
 	@After
