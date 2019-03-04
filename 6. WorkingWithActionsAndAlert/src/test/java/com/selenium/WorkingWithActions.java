@@ -49,8 +49,8 @@ public class WorkingWithActions
 
 // X axis goes to the right
 // Y axis goes down		
-		builder.moveByOffset(button.getLocation().getX() + 5, 
-							 button.getLocation().getY())
+		builder.moveByOffset(button.getLocation().getX() + 6, 
+							 button.getLocation().getY() + 6)
 				.click()
 				.perform();
 		assertEquals("Join", driver.findElement(By.xpath("//h2[1]")).getText());
