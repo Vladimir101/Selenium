@@ -26,6 +26,7 @@ public class MultiBrowsers
 		case "firefox":
 			System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
 			driver = new FirefoxDriver();
+			break;
 		case "edge":
 			System.setProperty("webdriver.edge.driver", "drivers/MicrosoftWebDriver.exe");
 			driver = new EdgeDriver();
