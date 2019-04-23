@@ -1,25 +1,24 @@
 package com.selenium.solution;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class MultiBrowsers
+class MultiBrowsers
 {
 	private WebDriver driver;
 	private static String browser;
 	
-	@BeforeClass
+	@BeforeAll
 	public static void oneTimeSetUp() throws IOException
 	{
 		Properties prop = new Properties();
@@ -27,7 +26,7 @@ public class MultiBrowsers
 		browser = prop.getProperty("browser");
 	}
 	
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception
 	{
 		switch(browser)
@@ -51,7 +50,7 @@ public class MultiBrowsers
 		driver.get("https://www.amazon.com/");
 	}
 	
-	@After
+	@AfterEach
 	public void tearDown() throws IOException
 	{
 		driver.quit();

@@ -1,21 +1,22 @@
 package com.selenium;
 
 import java.io.IOException;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class MultiBrowsers
+class MultiBrowsers
 {
 	private WebDriver driver;
 	private String browser = "chrome"; // task: specify browser in the .config file
 	
-	@Before
-	public void setUp() throws Exception
+	@BeforeEach
+	public void setUp() 
 	{
 		switch(browser)
 		{
@@ -39,7 +40,7 @@ public class MultiBrowsers
 		driver.get("https://www.amazon.com/");
 	}
 	
-	@After
+	@AfterEach
 	public void tearDown() throws IOException
 	{
 		driver.quit();
