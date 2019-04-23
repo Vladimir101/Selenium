@@ -67,7 +67,7 @@ class UsingWBManager2
 	@Test
 	void test3()
 	{
-		driver.get("https://www.amazon.com/");
+		driver.get("https://www.tdameritrade.com/");
 	}
 
 	@AfterEach
