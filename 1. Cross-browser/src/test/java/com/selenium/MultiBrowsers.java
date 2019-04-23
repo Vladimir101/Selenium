@@ -1,3 +1,5 @@
+// Task: specify browser in the .config file
+// See solution under the com.selenium.solution
 package com.selenium;
 
 import java.io.IOException;
@@ -13,7 +15,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 class MultiBrowsers
 {
 	private WebDriver driver;
-	private String browser = "chrome"; // task: specify browser in the .config file
+	private String browser = "chrome"; 
 	
 	@BeforeEach
 	public void setUp() 
@@ -47,7 +49,7 @@ class MultiBrowsers
 		if (browser.equals("firefox")) // bug with Firefox
 		{
 			Runtime rt = Runtime.getRuntime();
-			Process proc = rt.exec("taskkill /im geckodriver.exe /f /t");
+			rt.exec("taskkill /im geckodriver.exe /f /t");
 		}
 	}
 }

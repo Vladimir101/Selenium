@@ -57,7 +57,7 @@ class MultiBrowsers
 		if (browser.equals("firefox")) // bug with Firefox
 		{
 			Runtime rt = Runtime.getRuntime();
-			Process proc = rt.exec("taskkill /im geckodriver.exe /f /t");
+			rt.exec("taskkill /im geckodriver.exe /f /t");
 		}
 	}
 }

@@ -1,3 +1,6 @@
+// Task: 1. specify browser in the .config file
+//		 2. use Java 12 'switch'
+// See solution under the com.selenium.solution
 package com.selenium;
 
 import org.junit.jupiter.api.AfterEach;
@@ -5,6 +8,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -42,7 +46,7 @@ class UsingWBManager2
 	void test4()
 	{
 		WebDriverManager.edgedriver().setup();
-		driver = new FirefoxDriver();
+		driver = new EdgeDriver();
 		driver.get("https://www.vanguard.com/");
 	}
 
