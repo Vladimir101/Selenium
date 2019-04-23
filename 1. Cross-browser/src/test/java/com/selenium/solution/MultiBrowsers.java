@@ -27,7 +27,7 @@ class MultiBrowsers
 	}
 	
 	@BeforeEach
-	public void setUp() throws Exception
+	public void setUp()
 	{
 		switch(browser)
 		{
