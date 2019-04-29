@@ -11,11 +11,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+
+import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 class MultiBrowsers
 {
 	private WebDriver driver;
-	private String browser = "chrome"; 
+	private String browser = "headless"; 
 	
 	@BeforeEach
 	public void setUp() 
@@ -33,13 +36,21 @@ class MultiBrowsers
 		case "edge":
 			System.setProperty("webdriver.edge.driver", "drivers/MicrosoftWebDriver.exe");
 			driver = new EdgeDriver();
+			break;
+		case "headless":
+// Headless HtmlUnit browser written in Java			
+// 1. no browser launched (run in background)
+// 2. tests are fast (performance is improved)
+// 3. not suitable for Actions class (mouse movement, double click, etc.)			
+			driver = new HtmlUnitDriver(/* BrowserVersion.CHROME */); // emulates Chrome
 		}
 	}
 
 	@Test
 	public void test()
 	{
-		driver.get("https://www.amazon.com/");
+		driver.get("https://www.seleniumhq.org/");
+		System.out.println("Title of the page: " + driver.getTitle());
 	}
 	
 	@AfterEach
