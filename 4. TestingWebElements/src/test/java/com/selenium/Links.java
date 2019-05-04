@@ -1,5 +1,5 @@
 package com.selenium;
-// link tests
+
 import static org.junit.Assert.*;
 
 import java.util.List;
