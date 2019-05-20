@@ -5,6 +5,7 @@ package com.selenium;
 import java.io.IOException;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -18,10 +19,18 @@ import com.gargoylesoftware.htmlunit.BrowserVersion;
 class MultiBrowsers
 {
 	private WebDriver driver;
-	private String browser = "headless"; 
+	private static String browser = "headless"; 
+
+	@BeforeAll
+	static void oneTimeSetUp()
+	{
+// specify parameters via System properties
+		browser = System.getProperty("browser");
+		System.out.println("Browser name is " + browser);
+	}
 	
 	@BeforeEach
-	public void setUp() 
+	void setUp() 
 	{
 		switch(browser)
 		{
@@ -47,14 +56,14 @@ class MultiBrowsers
 	}
 
 	@Test
-	public void test()
+	void test()
 	{
 		driver.get("https://www.seleniumhq.org/");
 		System.out.println("Title of the page: " + driver.getTitle());
 	}
 	
 	@AfterEach
-	public void tearDown() throws IOException
+	void tearDown() throws IOException
 	{
 		driver.quit();
 		if (browser.equals("firefox")) // bug with Firefox
