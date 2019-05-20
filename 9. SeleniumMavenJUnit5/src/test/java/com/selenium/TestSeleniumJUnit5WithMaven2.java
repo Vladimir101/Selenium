@@ -13,6 +13,8 @@ class TestSeleniumJUnit5WithMaven2
 	@BeforeEach
 	void setUp()
 	{
+		String name = System.getProperty("developer");
+		System.out.println("Script developer's name is " + name);
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
 	}

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.selenium.TestSeleniumJUnit5WithMaven2
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.595 s - in com.selenium.TestSeleniumJUnit5WithMaven2
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.078 s - in com.selenium.TestSeleniumJUnit5WithMaven2
