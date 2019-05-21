@@ -19,7 +19,7 @@ class MultiBrowsers
 	private static String browser;
 	
 	@BeforeAll
-	public static void oneTimeSetUp() throws IOException
+	static void oneTimeSetUp() throws IOException
 	{
 		Properties prop = new Properties();
 		prop.load(new FileInputStream("browser.config"));
@@ -27,7 +27,7 @@ class MultiBrowsers
 	}
 	
 	@BeforeEach
-	public void setUp()
+	void setUp()
 	{
 		switch(browser)
 		{
@@ -45,13 +45,13 @@ class MultiBrowsers
 	}
 
 	@Test
-	public void test()
+	void test()
 	{
 		driver.get("https://www.amazon.com/");
 	}
 	
 	@AfterEach
-	public void tearDown() throws IOException
+	void tearDown() throws IOException
 	{
 		driver.quit();
 		if (browser.equals("firefox")) // bug with Firefox

@@ -21,7 +21,7 @@ class UsingWBManager2
 	private static String browser;
 	
 	@BeforeAll
-	public static void oneTimeSetUp() throws IOException
+	static void oneTimeSetUp() throws IOException
 	{
 		Properties prop = new Properties();
 		prop.load(new FileInputStream("browser.config"));
@@ -29,7 +29,7 @@ class UsingWBManager2
 	}
 	
 	@BeforeEach
-	public void setUp()
+	void setUp()
 	{
 		switch(browser)
 		{
@@ -71,7 +71,7 @@ class UsingWBManager2
 	}
 
 	@AfterEach
-	public void tearDown() throws IOException
+	void tearDown() throws IOException
 	{
 		driver.quit();
 		if (browser.equals("firefox")) // bug with Firefox
