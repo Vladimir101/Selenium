@@ -19,7 +19,7 @@ import com.gargoylesoftware.htmlunit.BrowserVersion;
 class MultiBrowsers
 {
 	private WebDriver driver;
-	private static String browser = "headless"; 
+	private static String browser = "headless";
 
 	@BeforeAll
 	static void oneTimeSetUp()
