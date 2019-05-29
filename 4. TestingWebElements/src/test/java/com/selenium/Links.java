@@ -31,7 +31,7 @@ public class Links
 		int numberOfLinks = list.size();
 		System.out.println("The number of links on the home page are " + numberOfLinks);
 				
-// print all links with names and urls
+// print all links with their names and urls
 		int i = 1; 
 		for (WebElement element: list)
 		{
