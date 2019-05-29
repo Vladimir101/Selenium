@@ -49,7 +49,7 @@ public class Locators
 		System.out.println(driver.findElement(By.tagName("body")).getText());
 		
 // by XPath - Shoes
-		driver.findElement(By.xpath("//a[@class='gnf_tree_junction'][contains(text(),'Shoes')]")).click();		
+		driver.findElement(By.xpath("//span[@class='gnf-skinny-3']")).click();		
 	}
 	
 	@After
