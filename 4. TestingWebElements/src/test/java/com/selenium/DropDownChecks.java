@@ -30,7 +30,7 @@ public class DropDownChecks
 		Select s = new Select(dropDown);
 		
 		s.selectByVisibleText("Drop Down Item 6");
-		s.selectByIndex(1);
+		s.selectByIndex(1); // index starts with 0
 		String optionSelected = s.getFirstSelectedOption().getText();
 		System.out.println("Currently selected menu item: " + optionSelected);
 		
