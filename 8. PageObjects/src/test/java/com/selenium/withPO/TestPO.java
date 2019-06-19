@@ -4,12 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import com.selenium.common.Base;
 
 public class TestPO
 {
@@ -21,7 +18,6 @@ public class TestPO
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://the-internet.herokuapp.com/login");
 	}
 
 	@After
