@@ -34,7 +34,7 @@ public class TestPO
 		assertTrue(homePage.getLoginConfirmation().contains("You logged into"));
 		
 		LoginPage loginPage = homePage.logout();
-		assertTrue(loginPage.getLogoutConfirmation().contains("You logged out"));
+		assertTrue(loginPage.getConfirmation().contains("You logged out"));
 	}
 
 // create test for invalid login	

@@ -25,7 +25,7 @@ public class LoginPage extends Base
 	private WebElement buttonLogin;
 	
 	@FindBy(id = "flash")
-	private WebElement confirmLogout;
+	private WebElement confirmation;
 	
 // constructor
 	public LoginPage(WebDriver driver)
@@ -61,8 +61,8 @@ public class LoginPage extends Base
 		return this;
 	}
 	
-	public String getLogoutConfirmation()
+	public String getConfirmation()
 	{
-		return confirmLogout.getText();
+		return confirmation.getText();
 	}
 }
