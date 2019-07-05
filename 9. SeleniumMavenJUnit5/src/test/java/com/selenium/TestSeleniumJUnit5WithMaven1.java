@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+// starts with Test*** for Surefire plugin convention
 class TestSeleniumJUnit5WithMaven1
 {
 	private WebDriver driver;
