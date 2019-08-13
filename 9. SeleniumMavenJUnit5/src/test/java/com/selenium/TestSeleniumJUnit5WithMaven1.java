@@ -21,7 +21,7 @@ class TestSeleniumJUnit5WithMaven1
 	void openSchoolWebsite()
 	{
 		System.out.println("Hi, School!");
-		driver.get("https://www.portnov.com");
+		driver.get("https://pasv.us/");
 		System.out.println("Title of the page: " + driver.getTitle());
 	}
 	
