@@ -34,19 +34,19 @@ class MultiBrowsers
 	{
 		switch(browser)
 		{
-		case "chrome":
-			System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-			driver = new ChromeDriver();
-			break;
-		case "firefox":
-			System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
-			driver = new FirefoxDriver();
-			break;
-		case "edge":
-			System.setProperty("webdriver.edge.driver", "drivers/MicrosoftWebDriver.exe");
-			driver = new EdgeDriver();
-			break;
-		case "headless":
+		case "chrome" ->
+			{System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+			driver = new ChromeDriver();}
+		case "firefox" ->
+			{System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");		
+// hiding logs
+// create c:/logs directory first			
+			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"C:/logs/logs.txt");		
+			driver = new FirefoxDriver();}
+		case "edge" ->
+			{System.setProperty("webdriver.edge.driver", "drivers/MicrosoftWebDriver.exe");
+			driver = new EdgeDriver();}
+		case "headless" ->
 // Headless HtmlUnit browser written in Java			
 // 1. no browser launched (run in background)
 // 2. tests are fast (performance is improved)
@@ -66,10 +66,5 @@ class MultiBrowsers
 	void tearDown() throws IOException
 	{
 		driver.quit();
-		if (browser.equals("firefox")) // bug with Firefox
-		{
-			Runtime rt = Runtime.getRuntime();
-			rt.exec("taskkill /im geckodriver.exe /f /t");
-		}
 	}
 }
