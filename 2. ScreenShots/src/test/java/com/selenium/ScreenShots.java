@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -24,7 +24,7 @@ public class ScreenShots
 {
 	private WebDriver driver;
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception
 	{
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
