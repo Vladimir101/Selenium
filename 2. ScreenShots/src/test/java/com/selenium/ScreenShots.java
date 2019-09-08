@@ -6,9 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -51,7 +50,7 @@ public class ScreenShots
 		ImageIO.write(entirePage.getImage(), "png", new File("EntireArea.png"));
 	}
 	
-	@After
+	@AfterEach
 	public void tearDown()
 	{
 		driver.quit();
