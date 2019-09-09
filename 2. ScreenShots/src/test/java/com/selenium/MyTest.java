@@ -7,12 +7,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-@ExtendWith(Base.class)
+@ExtendWith(MyTestWatcher.class)
 class MyTest extends Base
 {	
 	@BeforeEach
-	public void setUp2() throws Exception
+	public void setUp() throws Exception
 	{
+		driverSetUp();
 		driver.get("https://www.kmart.com/");
 	}
 	
