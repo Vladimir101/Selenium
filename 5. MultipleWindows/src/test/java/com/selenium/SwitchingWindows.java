@@ -19,7 +19,7 @@ public class SwitchingWindows
 	private WebDriver driver;
 
 	@Before
-	public void setUp() 
+	public void setUp()
 	{
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
@@ -31,26 +31,27 @@ public class SwitchingWindows
 	@Test
 	public void switchingWindows()
 	{
-		String firstWindow = driver.getWindowHandle();
-		String secondWindow = "";
-		
+		String firstTab = driver.getWindowHandle();
+		String secondTab = "";
 		driver.findElement(By.linkText("Click Here")).click();
-
-// find the second window handle		
+		
+// find the second tab handle		
 		Set<String> allWindows = driver.getWindowHandles();
-		for (String window: allWindows)
-			if (!window.equals(firstWindow))
-				secondWindow = window;
+		for (String window : allWindows)
+			if (!window.equals(firstTab))
+				secondTab = window;
 		
-// switch to the first window
-		driver.switchTo().window(firstWindow);
+// switch to the first tab
+		driver.switchTo().window(firstTab);
 		assertThat(driver.getTitle(), is(equalTo("The Internet")));
+// close the first tab		
+		driver.close();
 		
-// switch to the second windows
-		driver.switchTo().window(secondWindow);
+// switch to the new window (tab)
+		driver.switchTo().window(secondTab);
 		assertThat(driver.getTitle(), is(equalTo("New Window")));
 	}
-	
+
 	@After
 	public void tearDown() throws IOException
 	{
