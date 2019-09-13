@@ -3,22 +3,18 @@ package com.selenium;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
-import java.io.IOException;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SwitchingWindows
 {
 	private WebDriver driver;
 
-	@Before
+	@BeforeEach
 	public void setUp()
 	{
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
@@ -52,8 +48,8 @@ public class SwitchingWindows
 		assertThat(driver.getTitle(), is(equalTo("New Window")));
 	}
 
-	@After
-	public void tearDown() throws IOException
+	@AfterEach
+	public void tearDown()
 	{
 		driver.quit();
 	}
