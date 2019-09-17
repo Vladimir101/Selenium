@@ -30,7 +30,7 @@ public class Grid
 	{
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setBrowserName("chrome");
-		capabilities.setPlatform(Platform.WIN10);
+		capabilities.setPlatform(Platform.WINDOWS);
 		openGoogle(capabilities);
 	}
 
