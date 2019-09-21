@@ -16,7 +16,7 @@ public class LoginLogout extends Base
 	@Before
 	public void setUp() 
 	{
-		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+// chromedriver.exe location is specified in the system PATH
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://the-internet.herokuapp.com/login");
@@ -34,16 +34,14 @@ public class LoginLogout extends Base
 // fill out the login form
 		driver.findElement(By.id("username")).sendKeys("tomsmith");
 		driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
-		WebElement buttonLogin = driver.findElement(By.className("radius"));
-		clickElement(buttonLogin);
+		clickElement(By.className("radius"));
 		
 // verify the logged in confirmation message
 		WebElement confirmLogin = driver.findElement(By.id("flash"));
 		assertTrue(confirmLogin.getText().contains("You logged into"));
 		
 // logout
-		WebElement buttonLogout = driver.findElement(By.cssSelector(".button.secondary.radius"));
-		clickElement(buttonLogout);
+		clickElement(By.cssSelector(".button.secondary.radius"));
 		
 // verify the logged out confirmation message
 		WebElement confirmLogout = driver.findElement(By.id("flash"));
