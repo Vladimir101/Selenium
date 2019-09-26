@@ -1,0 +1,4 @@
+username, password, expected
+tom, abc, Your username is invalid!
+tomsmith, abc, Your password is invalid!
+1, 2, Your username is invalid!
