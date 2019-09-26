@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 //starts with Test*** for Surefire plugin convention
 class TestSeleniumJUnit5WithMaven2
 {
@@ -13,11 +14,8 @@ class TestSeleniumJUnit5WithMaven2
 	@BeforeEach
 	void setUp()
 	{
-		
-		  String name = System.getProperty("os.name"); 
-		  System.out.println("OS name is " +
-		  name);
-		 
+		String name = System.getProperty("os.name");
+		System.out.println("OS name is " + name);
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
 	}
@@ -29,7 +27,7 @@ class TestSeleniumJUnit5WithMaven2
 		driver.get("https://www.seleniumhq.org/");
 		System.out.println("Title of the page: " + driver.getTitle());
 	}
-	
+
 	@AfterEach
 	void tearDown()
 	{
