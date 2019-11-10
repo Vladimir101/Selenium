@@ -1,14 +1,8 @@
 package com.selenium4;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.io.File;
-import java.io.IOException;
-
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.io.FileHandler;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
