@@ -27,6 +27,7 @@ public class WorkingWithActions
 		builder = new Actions(driver);
 	}
 
+//  JavaScript alerts DO NOT exist in the DOM	
 	@Test
 	public void moveMouseWithAlert() throws InterruptedException
 	{
