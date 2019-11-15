@@ -43,6 +43,14 @@ public class ElementExistsAndScrolling
 	public void scrollingVertically() throws InterruptedException
 	{
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
+/*
+ * window.scroll(x-coord, y-coord)
+ * Parameters:
+ * x-coord is the pixel along the horizontal axis of the document that you want
+ * displayed in the upper left.
+ * y-coord is the pixel along the vertical axis of the document that you want
+ * displayed in the upper left.
+*/
 		jse.executeScript("window.scroll(0, 5000)");
 		Thread.sleep(5000);
 	}
