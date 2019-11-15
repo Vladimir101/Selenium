@@ -46,8 +46,8 @@ public class ElementExistsAndScrolling
 /*
  * window.scroll(x-coord, y-coord)
  * Parameters:
- * x-coord is the pixel along the horizontal axis of the document 
- * y-coord is the pixel along the vertical axis of the document 
+ * x-coord is the number of pixels along the horizontal axis of the document you want to scroll
+ * y-coord is the number of pixels along the vertical axis of the document you want to scroll 
 */
 		jse.executeScript("window.scroll(0, 5000)");
 		Thread.sleep(5000);
