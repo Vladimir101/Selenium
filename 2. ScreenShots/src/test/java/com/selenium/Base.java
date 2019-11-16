@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -14,12 +15,14 @@ class Base
 {
 	protected static WebDriver driver;
 
-	protected void driverSetUp()
+	@BeforeEach
+	void driverSetUp()
 	{
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.get("https://www.kmart.com/");
 	}
 
 	protected void doScreenshot()
