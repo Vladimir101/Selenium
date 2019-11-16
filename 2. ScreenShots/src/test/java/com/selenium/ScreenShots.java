@@ -1,3 +1,4 @@
+// https://github.com/pazone/ashot
 package com.selenium;
 
 import java.io.File;
@@ -45,7 +46,7 @@ public class ScreenShots
 	public void getScreenshotOfEntireArea() throws IOException
 	{
 		Screenshot entirePage = new AShot()
-				.shootingStrategy(ShootingStrategies.viewportPasting(1000)) // scroll 1000 milliseconds
+				.shootingStrategy(ShootingStrategies.viewportPasting(1000)) // time between scrolls in milliseconds
 				.takeScreenshot(driver);
 		ImageIO.write(entirePage.getImage(), "png", new File("EntireArea.png"));
 	}
