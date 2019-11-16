@@ -13,6 +13,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class SwitchingWindows
 {
 	private WebDriver driver;
+	private String firstTabTitle = "The Internet";
+	private String titleToSwitch = "New Window";
 
 	@BeforeEach
 	public void setUp()
@@ -30,22 +32,30 @@ public class SwitchingWindows
 		String firstTab = driver.getWindowHandle();
 		String secondTab = "";
 		driver.findElement(By.linkText("Click Here")).click();
+
+// switch to the second tab without knowing second tab handle		
+		Set<String> allWindows = driver.getWindowHandles();
+		for (String window : allWindows)
+		{
+			driver.switchTo().window(window);
+			if (titleToSwitch.equals(driver.getTitle()))
+				break;
+		}
 		
 // find the second tab handle		
-		Set<String> allWindows = driver.getWindowHandles();
 		for (String window : allWindows)
 			if (!window.equals(firstTab))
 				secondTab = window;
 		
-// switch to the first tab
+// switch to the first tab using the first tab handle
 		driver.switchTo().window(firstTab);
-		assertThat(driver.getTitle(), is(equalTo("The Internet")));
+		assertThat(driver.getTitle(), is(equalTo(firstTabTitle)));
 // close the first tab		
 		driver.close();
 		
-// switch to the new window (tab)
+// switch to the second tab using the second tab handle
 		driver.switchTo().window(secondTab);
-		assertThat(driver.getTitle(), is(equalTo("New Window")));
+		assertThat(driver.getTitle(), is(equalTo(titleToSwitch)));
 	}
 
 	@AfterEach
