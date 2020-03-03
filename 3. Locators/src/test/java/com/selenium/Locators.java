@@ -25,7 +25,6 @@ public class Locators
 	@Before
 	public void setUp() throws Exception
 	{
-//		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("https://www.kmart.com");
 		driver.manage().window().maximize();
