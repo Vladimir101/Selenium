@@ -4,19 +4,28 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class Locators
 {
 	private WebDriver driver;
 	
+	@BeforeClass
+	public static void oneTimeSetUp()
+	{
+		WebDriverManager.chromedriver().setup();
+	}
+	
 	@Before
 	public void setUp() throws Exception
 	{
-		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+//		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("https://www.kmart.com");
 		driver.manage().window().maximize();
@@ -30,11 +39,39 @@ public class Locators
 		driver.findElement(By.className("ribbon-kmart-logo")).click();
 	
 // by CSS selector - Sign In, Accounts & Points
-		driver.findElement(By.cssSelector("#yourAccount")).click();	
-		driver.navigate().refresh();	
+// to avoid stale element
+		boolean staleElement = true;
+		while(staleElement)
+		{
+			try
+			{
+				driver.findElement(By.cssSelector("#yourAccount")).click();
+				staleElement = false;
+			}
+			catch(org.openqa.selenium.StaleElementReferenceException e)
+			{
+				if (e.getMessage().contains("element is not attached"))
+					staleElement = true;
+			}
+		}
+		driver.navigate().refresh();
 		
-// by id - search box
-		driver.findElement(By.id("keyword")).sendKeys("milk");		
+// id
+// after refresh to avoid stale element
+		staleElement = true;
+		while(staleElement)
+		{	
+			try 
+			{ 
+				driver.findElement(By.id("keyword")).sendKeys("milk"); 
+				staleElement = false;
+			}
+			catch(org.openqa.selenium.StaleElementReferenceException e)
+			{
+				if (e.getMessage().contains("element is not attached"))
+					staleElement = true;
+			}
+		}	
 
 // by link text - Kmart logo
 		driver.findElement(By.linkText("Kmart home")).click();		
