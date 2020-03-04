@@ -3,6 +3,7 @@ package com.selenium;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
@@ -29,10 +30,20 @@ public class ElementExistsAndScrolling
 	@Test
 	public void verifyElementExistance()
 	{
-		driver.findElement(By.linkText("Help")).click();
+		String titleToSwitch = "Home";
+		driver.findElement(By.linkText("Help")).click();		
+		driver.findElement(By.cssSelector(".bottom-half-margin img")).click();
 		
+		Set<String> allWindows = driver.getWindowHandles();
+		for (String window : allWindows)
+		{
+			driver.switchTo().window(window);
+			if (titleToSwitch.equals(driver.getTitle()))
+				break;
+		}	
+
 // verify that there is only one text box for questions 
-		assertEquals(driver.findElements(By.id("question")).size(), 1);
+		assertEquals(driver.findElements(By.xpath("//input")).size(), 1);
 		
 // check that element with id = myElement does not exist
 		List<WebElement> list = driver.findElements(By.id("myElement"));
