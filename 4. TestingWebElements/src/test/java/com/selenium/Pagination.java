@@ -23,7 +23,7 @@ class Pagination
 	void setUp()
 	{
 		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get("https://www.amazon.com/gp/goldbox");
 		driver.manage().window().maximize();
 	}
@@ -40,8 +40,10 @@ class Pagination
 		String[] resultWords = results.split(" ");
 // total results matching		
 		int totalResults = Integer.parseInt(resultWords[3]);
+		System.out.println("Total results found: " + totalResults);
 // results displayed on one page		
 		int resultsDisplayed = Integer.parseInt(resultWords[1].split("-")[1]);
+		System.out.println("Maximum results displayed on one page: " + resultsDisplayed);
 		
 // total number of pages		
 		int numberOfPages = (int)Math.ceil((double)totalResults/resultsDisplayed);
@@ -52,9 +54,11 @@ class Pagination
 		for (int i = 1; i <= numberOfPages; i++)
 		{
 			List<WebElement> visibleResults = 
-					driver.findElements(By.cssSelector(".a-section.a-spacing-none.tallCellView.gridColumn5.singleCell"));
-			
+					driver.findElements(By.className("gridColumn5"));
+
 			actualTotalResults += visibleResults.size();
+			System.out.println("Page: " + i + " visible results: " + visibleResults.size());
+			
 			if (i == numberOfPages)
 				break;
 			driver.findElement(By.linkText("Next→")).click();
