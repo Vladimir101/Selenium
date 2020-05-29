@@ -2,13 +2,8 @@
 // See solution under the com.selenium.solution
 package com.selenium;
 
-import java.io.IOException;
-
 import org.apache.commons.lang3.SystemUtils;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -67,7 +62,7 @@ class MultiBrowsers
 	}
 	
 	@AfterEach
-	void tearDown() throws IOException
+	void tearDown()
 	{
 		driver.quit();
 	}
