@@ -4,6 +4,7 @@ package com.selenium;
 
 import java.io.IOException;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,7 +36,10 @@ class MultiBrowsers
 		switch(browser)
 		{
 		case "chrome" ->
-			{System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+			{if (SystemUtils.IS_OS_WINDOWS)
+				System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+			else
+				System.setProperty("webdriver.chrome.driver", "mac_drivers/chromedriver.exe");
 			driver = new ChromeDriver();}
 		case "firefox" ->
 			{System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");		
