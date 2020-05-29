@@ -1,6 +1,7 @@
-// Task: specify browser in the .config file
-// See solution under the com.selenium.solution
 package com.selenium;
+
+import java.io.*;
+import java.util.Properties;
 
 import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.*;
@@ -11,18 +12,20 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
-
 class MultiBrowsers
 {
 	private WebDriver driver;
 	private static String browser = "headless";
 
 	@BeforeAll
-	static void oneTimeSetUp()
+	static void oneTimeSetUp() throws IOException
 	{
-// specify parameters via System properties
-		browser = System.getProperty("browser");
-		System.out.println("Browser name is " + browser);
+// 1. specify parameters via System properties
+		browser = System.getProperty("browser");  // -Dbrowser=chrome
+// 2. specify browser in the .config file
+		var prop = new Properties();
+		prop.load(new FileInputStream("browser.config"));
+		browser = prop.getProperty("browser");	
 	}
 	
 	@BeforeEach
@@ -32,9 +35,9 @@ class MultiBrowsers
 		{
 		case "chrome" ->
 			{if (SystemUtils.IS_OS_WINDOWS)
-				System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver", "c:/drivers/chromedriver.exe");
 			else
-				System.setProperty("webdriver.chrome.driver", "mac_drivers/chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver", "c:/mac_drivers/chromedriver.exe");
 			driver = new ChromeDriver();}
 		case "firefox" ->
 			{System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");		
