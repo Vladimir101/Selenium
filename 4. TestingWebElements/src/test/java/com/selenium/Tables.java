@@ -1,5 +1,6 @@
 package com.selenium;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.After;
@@ -17,14 +18,14 @@ public class Tables
 	@Before
 	public void setUp() 
 	{
-		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "c:/drivers/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("https://the-internet.herokuapp.com/tables");
 		driver.manage().window().maximize();
 	}
 
 	@Test
-	public void test()
+	public void getColumn()
 	{
 // list of data rows in the Example 2 table		
 		List<WebElement> rows = driver.findElements(By.xpath("//table[2]/tbody/tr"));
@@ -45,6 +46,17 @@ public class Tables
 			cellXPath = "//table[2]/tbody/tr[" + i + "]/td[4]";
 			System.out.println(driver.findElement(By.xpath(cellXPath)).getText());
 		}	
+		
+// 3. 	
+		System.out.println("Third method");
+		var cellText = new ArrayList<String>(); // if I need compare column cells in assertEquals
+		List<WebElement> column = driver.findElements(By.cssSelector("table#table2 tr>td:nth-child(4)"));
+		for(WebElement cell: column)
+		{
+			String text = cell.getText();
+			System.out.println(text);
+			cellText.add(text);
+		}
 	}
 	
 	@After
