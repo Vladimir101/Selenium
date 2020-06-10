@@ -33,8 +33,9 @@ public class WorkingWithActions
 // Move the mouse to the middle of the element
 		builder.moveToElement(mouseOver).perform();
 		
-		Thread.sleep(2000);
 		Alert alert = driver.switchTo().alert();
+// read the label of the alert		
+		System.out.println(alert.getText());
 		alert.accept();
 	}
 	
