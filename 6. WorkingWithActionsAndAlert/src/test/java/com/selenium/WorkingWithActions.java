@@ -37,6 +37,8 @@ public class WorkingWithActions
 // read the label of the alert		
 		System.out.println(alert.getText());
 		alert.accept();
+// 		alert.dismiss(); for Cancel button		
+// 		driver.switchTo().alert().accept();  without creating the alert object		
 	}
 	
 	@Test
