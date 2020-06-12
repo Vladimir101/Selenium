@@ -31,9 +31,12 @@ class Pagination
 	@Test
 	void test()
 	{
+// Click on 'Computers & Accessories'		
 		driver.findElement(By.xpath("//span[11]/div[1]/label[1]/input[1]")).click();
 		
-// Showing 1-xx of xxx results for		
+// Showing 1-xx of xxx results for	
+// Example: Showing 1-40 of 181 results for		
+// Use Ranorex Selocity		
 		String results = driver.findElement(By.cssSelector("#FilterItemView_all_summary span:nth-child(2)"))
 				.getText();
 		
@@ -55,9 +58,10 @@ class Pagination
 		{
 			List<WebElement> visibleResults = 
 					driver.findElements(By.className("gridColumn5"));
-
-			actualTotalResults += visibleResults.size();
-			System.out.println("Page: " + i + " visible results: " + visibleResults.size());
+			
+			int resultsOnPage = visibleResults.size();
+			actualTotalResults += resultsOnPage;
+			System.out.println("Page: " + i + " visible results: " + resultsOnPage);
 			
 			if (i == numberOfPages)
 				break;
