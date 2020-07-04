@@ -30,6 +30,8 @@ public class BypassLoginWithCookie
 	void setUp() throws Exception
 	{
 		driver = new ChromeDriver();
+// WebDriver does not allow set the cookies directly into the session.
+// By visiting the login page, we setup the right domain		
 		driver.get("http://www.memotome.com/login.asp");
 // 		driver.get("http://demo.guru99.com/test/cookie/selenium_aut.php");	
 		driver.manage().window().maximize();
