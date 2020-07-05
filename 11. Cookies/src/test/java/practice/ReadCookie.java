@@ -40,6 +40,7 @@ public class ReadCookie
 // login		
 		driver.findElement(By.name("LoginName")).sendKeys("testselenium");
 		driver.findElement(By.name("Password")).sendKeys("test@123");
+		driver.findElement(By.name("Remember")).click();
 		driver.findElement(By.xpath("//input[@value='Log Me In']")).click();		
 /*
  * driver.findElement(By.name("username")).sendKeys("abc123");
