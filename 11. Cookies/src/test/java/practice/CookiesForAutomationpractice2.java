@@ -1,12 +1,7 @@
 package practice;
 
-import java.util.Set;
-
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 class CookiesForAutomationpractice2 extends BaseTest
 {
@@ -19,8 +14,7 @@ class CookiesForAutomationpractice2 extends BaseTest
 
 	@Test
 	void loginWithCookies1() throws InterruptedException
-	{
-		
+	{		
 		for (Cookie cookie : cookies)
 		  driver.manage().addCookie(cookie);
 		 	
@@ -30,8 +24,7 @@ class CookiesForAutomationpractice2 extends BaseTest
 	
 	@Test
 	void loginWithCookies2() throws InterruptedException
-	{
-		
+	{	
 		for (Cookie cookie : cookies)
 		  driver.manage().addCookie(cookie);
 		 	
