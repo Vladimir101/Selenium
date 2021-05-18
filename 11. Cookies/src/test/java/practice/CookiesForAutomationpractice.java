@@ -12,7 +12,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 class CookiesForAutomationpractice
 {
 	private WebDriver driver;
-	static Set<Cookie> cookies;
+	private static Set<Cookie> cookies;
 	
 	@BeforeAll
 	static void oneTimeSetUp()
@@ -48,10 +48,10 @@ class CookiesForAutomationpractice
 	@Test
 	void loginWithCookies() throws InterruptedException
 	{
+// comment cookies to see the difference		
 		for (Cookie cookie : cookies)
 			driver.manage().addCookie(cookie);
-
-// http://automationpractice.com/index.php?controller=authentication	
+		 
 		driver.get("http://automationpractice.com/index.php?id_category=3&controller=category");	
 		Thread.sleep(5000);
 	}
