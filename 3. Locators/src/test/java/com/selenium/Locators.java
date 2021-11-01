@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class LocatorsNew
+public class Locators
 {
 	private WebDriver driver;
 	
