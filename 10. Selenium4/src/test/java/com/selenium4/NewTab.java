@@ -34,7 +34,12 @@ class NewTab
 	@Test
 	public void openNewTab()
 	{
+// new tab		
 		driver.switchTo().newWindow(WindowType.TAB);
-		driver.navigate().to("https://www.google.com");
+		driver.navigate().to("https://junit.org/junit5/");
+
+// new browser window		
+		driver.switchTo().newWindow(WindowType.WINDOW);
+		driver.get("https://maven.apache.org/");
 	}
 }
