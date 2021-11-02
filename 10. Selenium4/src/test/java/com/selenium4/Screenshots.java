@@ -10,7 +10,7 @@ import org.openqa.selenium.io.FileHandler;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-class ElementScreenshot
+class Screenshots
 {
 	private WebDriver driver;
 	private String URL = "https://www.seleniumhq.org/";
@@ -36,10 +36,27 @@ class ElementScreenshot
 	}
 
 	@Test
-	public void screenshotOfWebElement() throws IOException
+	public void screenshotOfWebElement1() throws IOException
 	{
 		WebElement logo = driver.findElement(By.id("selenium_webdriver"));
 		File file = logo.getScreenshotAs(OutputType.FILE);
 		FileHandler.copy(file, new File("webdriver_logo.png"));
+	}
+	
+	@Test
+	public void screenshotOfWebElement2() throws IOException
+	{
+		WebElement logo = driver.findElement(By.xpath("//div[6]/a[1]/img[1]"));
+		TakesScreenshot ts = (TakesScreenshot)logo;
+		File file = ts.getScreenshotAs(OutputType.FILE);
+		FileHandler.copy(file, new File("lambdatest_logo.png"));
+	}
+	
+	@Test
+	public void getScreenshotOfVisibleArea() throws IOException
+	{
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		FileHandler.copy(ts.getScreenshotAs(OutputType.FILE), 
+				new File("visible_area.png"));
 	}
 }
