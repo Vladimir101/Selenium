@@ -1,53 +1,40 @@
-package com.selenium;
+package tests.states;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ElementStates
+import common.BaseTest;
+
+class ElementStates extends BaseTest
 {
-	private WebDriver driver;
-
-	@Before
-	public void setUp() 
+	@BeforeEach
+	void open() throws Exception
 	{
-		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.get("http://book.theautomatedtester.co.uk/");
-		driver.manage().window().maximize();
+		driver.get("https://formy-project.herokuapp.com/form");
 	}
 
 	@Test
-	public void gettingStates()
+	void getStates()
 	{
-		driver.findElement(By.linkText("Chapter1")).click();
-// verify that the checkbox is visible		
-		WebElement checkbox = driver.findElement(By.name("selected(1234)"));
-		assertTrue(checkbox.isDisplayed());
-		
-// verify that the checkbox is checked			
-		checkbox.click();
-		assertTrue(checkbox.isSelected());
+// verify that the radiobutton is visible		
+		WebElement radio = driver.findElement(By.id("radio-button-3"));
+		assertTrue(radio.isDisplayed());
+
+// verify that the radiobutton is checked		
+		radio.click();
+		assertTrue(radio.isSelected());
 	}
 	
 	@Test
-	public void readingInputField()
+	void readInputField()
 	{
-		WebElement textbox = driver.findElement(By.id("q"));
-		textbox.sendKeys("New text");
-		String text = textbox.getAttribute("value");
-		assertEquals("New text", text);
-	}
-	
-	@After
-	public void tearDown()
-	{
-		driver.quit();
+		WebElement first = driver.findElement(By.id("first-name"));
+		first.sendKeys("Vlad");
+		String name = first.getAttribute("value");
+		assertEquals("Vlad", name);
 	}
 }
