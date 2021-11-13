@@ -22,23 +22,19 @@ public class WorkingWithActions
 		driver.manage().window().maximize();
 		builder = new Actions(driver);
 	}
-
-//  JavaScript alerts DO NOT exist in the DOM	
+	
 	@Test
-	public void moveMouseWithAlert() throws InterruptedException
+	public void hoverOver()
 	{
-		driver.get("http://book.theautomatedtester.co.uk/chapter4");
-		WebElement mouseOver = driver.findElement(By.id("hoverOver"));
+		driver.get("https://the-internet.herokuapp.com/hovers");
+// name: user1		
+		WebElement name = driver.findElement(By.xpath("//div[1]/div[1]/h5[1]"));
+		System.out.println(name.isDisplayed()); // false
 		
-// Move the mouse to the middle of the element
-		builder.moveToElement(mouseOver).perform();
-		
-		Alert alert = driver.switchTo().alert();
-// read the label of the alert		
-		System.out.println(alert.getText());
-		alert.accept();
-// 		alert.dismiss(); for Cancel button		
-// 		driver.switchTo().alert().accept();  without creating the alert object		
+		WebElement image1 = driver.findElement(By.xpath("//div[1]/div[1]/img[1]"));
+// hover over		
+		builder.moveToElement(image1).perform();
+		System.out.println(name.isDisplayed()); // true
 	}
 	
 	@Test
